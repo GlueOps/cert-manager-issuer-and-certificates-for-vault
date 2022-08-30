@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: injector-selfsigned-ca
-  namespace: glueops-vault
+  namespace: vault-test-2
 spec:
   isCA: true
   commonName: Agent Inject CA
@@ -21,7 +21,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: injector-ca-issuer
-  namespace: glueops-vault
+  namespace: vault-test-2
 spec:
   ca:
     secretName: injector-ca-secret
