@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: vault-selfsigned-ca
-  namespace: vault
+  name: injector-selfsigned-ca
+  namespace: vault-test-2
 spec:
   isCA: true
-  commonName: Vault CA
-  secretName: vault-ca-secret
-  duration: 87660h0m0s
+  commonName: Agent Inject CA
+  secretName: injector-ca-secret
+  duration: 87660h0m0s # 10 years
   privateKey:
     algorithm: ECDSA
     size: 256
@@ -20,26 +20,25 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: vault-ca-issuer
-  namespace: vault
+  name: injector-ca-issuer
+  namespace: vault-test-2
 spec:
   ca:
-    secretName: vault-ca-secret
+    secretName: injector-ca-secret
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: vault-certificate
-  namespace: vault
+  name: injector-certificate
+  namespace: vault-test-2
 spec:
-  secretName: vault-tls
+  secretName: injector-tls
   duration: 24h0m0s
   renewBefore: 2h24m0s  # roughly 10% of 24h
   dnsNames:
-  - *.vault.svc.cluster.local
-  - *.vault-internal
-  - *.vault-internal.vault.svc.cluster.local
-  - *.vault
+  - vault-agent-injector-svc
+  - vault-agent-injector-svc.vault-test-2
+  - vault-agent-injector-svc.vault-test-2.svc
   issuerRef:
-    name: vault-ca-issuer
-  commonName: vault cert
+    name: injector-ca-issuer
+  commonName: Agent Inject Cert
