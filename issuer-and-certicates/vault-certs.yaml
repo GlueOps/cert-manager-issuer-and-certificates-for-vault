@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: injector-selfsigned-ca
-  namespace: vault-test-2
+  namespace: vault
 spec:
   isCA: true
   commonName: Agent Inject CA
@@ -21,7 +21,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: injector-ca-issuer
-  namespace: vault-test-2
+  namespace: vault
 spec:
   ca:
     secretName: injector-ca-secret
@@ -30,7 +30,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: injector-certificate
-  namespace: vault-test-2
+  namespace: vault
 spec:
   secretName: injector-tls
   duration: 24h0m0s
