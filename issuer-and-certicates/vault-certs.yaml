@@ -40,7 +40,6 @@ spec:
   - '*.vault-internal'
   - '*.vault-internal.vault.svc.cluster.local'
   - '*.vault'
-  ipNames:
   - '127.0.0.1'
   issuerRef:
     name: vault-ca-issuer
