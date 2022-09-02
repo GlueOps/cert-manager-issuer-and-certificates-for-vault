@@ -6,7 +6,7 @@ metadata:
   namespace: vault
 spec:
   isCA: true
-  commonName: Agent Inject CA
+  commonName: Vault CA
   secretName: vault-ca-secret
   duration: 87660h0m0s # 10 years
   privateKey:
