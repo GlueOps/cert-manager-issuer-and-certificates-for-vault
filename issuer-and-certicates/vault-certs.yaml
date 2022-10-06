@@ -33,8 +33,8 @@ metadata:
   namespace: glueops-core-vault
 spec:
   secretName: vault-tls
-  duration: 24h0m0s
-  renewBefore: 2h24m0s  # roughly 10% of 24h
+  duration: 100h0m0s
+  renewBefore: 24h24m0s
   dnsNames:
   - '*.glueops-core-vault.svc.cluster.local'
   - '*.vault-internal'
